@@ -1,0 +1,9 @@
+sudo iptables -A OUTPUT -p tcp -s 192.168.1.89 --tcp-flags RST RST -j DROP
+
+/proc/sys/net/ipv4/ip_forwad
+
+
+sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com XXXXXXXXXXXXXX
+
+/etc/hosts
+/etc/hostname

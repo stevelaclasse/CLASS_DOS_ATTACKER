@@ -1,0 +1,12 @@
+os.system("iptables -A OUTPUT -p tcp -s "+ip.src+"--tcp-flags RST RST -j DROP")
+
+subprocess.check_call(['iptables', '-A',
+                       'OUTPUT', '-p', 'tcp', 
+                       '-s', '+ip.src+',
+                        '--tcp-flags', 'RST RST','-j', 'DROP'])
+
+
+subprocess.check_call(['iptables', '-A',
+                       'OUTPUT', '-p', 'tcp', 
+                       '-s', ip.src,
+                        '--tcp-flags', 'RST','RST','-j', 'DROP'])

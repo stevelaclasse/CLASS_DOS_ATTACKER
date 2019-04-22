@@ -57,17 +57,6 @@ class test_fenetre(Tkinter.Tk):
 		self.frame2.rowconfigure(0, weight=1)
 		self.frame2.columnconfigure(0, weight=1)
 
-		#frame2=Tkinter.LabelFrame(self,text="INFOMATIONS SUR MACHINE CIBLE",borderwidth=2,width=100,height=100,relief=Tkinter.GROOVE)
-		#frame2.pack()
-		#frame2.grid(column=0,row=1,sticky="EW",pady=10,padx=30)
-		#frame3=Tkinter.LabelFrame(self,text="AUTRES INFORMATIONS SUR L'ATTAQUE",borderwidth=2,width=100,height=100,relief=Tkinter.GROOVE)
-		#frame3.pack()
-		#frame3.grid(column=0,row=2,sticky="EW",pady=10,padx=30)
-		
-		#self.frame1.pack_propagate(False)	
-		#frame2.pack_propagate(False)
-		#frame3.pack_propagate(False)
-		
 		##variable de colonnes et lignes
 		x=0
 		y=0
@@ -193,15 +182,6 @@ class test_fenetre(Tkinter.Tk):
 		x=(x+1)%2
 		y=(y+1)
 
-		#f3l4=Tkinter.Label(self.frame1, text="INTERFACE:",height=2,anchor="e")
-		#f3l4.grid(column=x,row=y,sticky="E")
-		#x=(x+1)%2
-		#self.f3t4=Tkinter.StringVar()
-		#self.f3t4.set("")
-		#self.f3z4=Tkinter.Entry(self.frame1,textvariable=self.f3t4,width=10)
-		#self.f3z4.grid(column=x,row=y,sticky="W",padx=5)
-		#x=(x+1)%2
-		#y=(y+1)
 
 		
 		f3l4=Tkinter.Label(self.frame1, text="INTERFACE:",height=2,anchor="e")
@@ -257,12 +237,6 @@ class test_fenetre(Tkinter.Tk):
 		x=(x+1)%2
 		y=(y+1)
 
-		#fake2=Tkinter.Label(self.frame1, text="",height=2,anchor="e")
-		#fake2.grid(column=x,row=y,sticky="E")
-		#x=(x+1)%2
-		#x=(x+1)%2
-		#y=(y+1)
-
 		#CREATION DU BOUTON DU SNIFF
 		self.f4b3 = Tkinter.Button(self.frame1,text="SNIFFER LES PAQUETS",command=self.OnButtonSniff,relief=Tkinter.RAISED)
 		self.f4b3.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
@@ -296,18 +270,6 @@ class test_fenetre(Tkinter.Tk):
 		x=(x+1)%2
 		x=(x+1)%2
 		y=(y+1)	
-	
-		#fake5=Tkinter.Label(self.frame1, text="",height=2,anchor="e")
-		#fake5.grid(column=x,row=y,sticky="E")
-		#x=(x+1)%2
-		#x=(x+1)%2
-		#y=(y+1)
-
-		#fake6=Tkinter.Label(self.frame1, text="",height=2,anchor="e")
-		#fake6.grid(column=x,row=y,sticky="E")
-		#x=(x+1)%2
-		#x=(x+1)%2
-		#y=(y+1)	
 		
 		x=(x+1)%2
 		x=(x+1)%2
@@ -334,6 +296,7 @@ class test_fenetre(Tkinter.Tk):
 		self.frame1.rowconfigure(y, weight=1)
 		self.frame1.columnconfigure(x, weight=1)
 
+		self.f4b2.config(state=Tkinter.DISABLED)
 
 		x=(x+1)%2
 		x=(x+1)%2
@@ -491,25 +454,6 @@ class test_fenetre(Tkinter.Tk):
 	def OnButtonSniff(self):
 		
 	
-		#sniff=Tkinter.Toplevel(self)
-		#sniff.title("SNIFFING DES PAQUETS")
-		
-		#face=self.f3t4.get()
-		#f1=Tkinter.Frame(sniff,borderwidth=2,width=50,height=50,relief=Tkinter.GROOVE)
-		#self.frame1.pack()
-		#f1.grid(column=0,row=0,sticky="EW",pady=10,padx=30)
-
-		#f2=Tkinter.LabelFrame(sniff,text="AFFICHAGE DES LOGS",borderwidth=2,height=10,relief=Tkinter.GROOVE)
-		#self.frame1.pack()
-		#f2.grid(column=0,row=1,pady=10,padx=30)
-
-		#a=0
-		#b=0
-
-		#REMPLISSAGE DU PANNEAU CONCERNANT L'ORDINATEUR ATTAQUANT
-		#m1=Tkinter.Label(f1,text="CAPTURE DES PAQUETS SUR L'INTERFACE :"+face,height=5,fg="blue",anchor="w")
-		#m1.grid(column=a,row=b,sticky="w")
-		#print("CAPTURE DES PAQUETS SUR L'INTERFACE:"+self.f3t4.get())
 
 		self.deactivate_buttons()
 		

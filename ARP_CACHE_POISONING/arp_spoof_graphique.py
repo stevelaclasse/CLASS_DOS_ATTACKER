@@ -35,24 +35,20 @@ class test_fenetre(Tkinter.Tk):
 		self["bg"]="green"
 	
 		self.frame1=Tkinter.Frame(self,borderwidth=2,width=100,height=100,relief=Tkinter.GROOVE)
-		#self.frame1.pack()
-		self.frame1.grid(column=0,row=0,sticky="EW",pady=10,padx=30)
+		self.frame1.grid(column=0,row=0,sticky="EW",pady=10,padx=30)	
+
+		self.frame1.master.rowconfigure(0, weight=1)
+		self.frame1.master.columnconfigure(0, weight=1)
+		self.frame1.rowconfigure(0, weight=1)
+		self.frame1.columnconfigure(0, weight=1)
 
 		self.frame2=Tkinter.LabelFrame(self,text="AFFICHAGE DES LOGS",borderwidth=2,height=10,relief=Tkinter.GROOVE)
-		#self.frame1.pack()
 		self.frame2.grid(column=0,row=1,pady=10,padx=30)
 
-
-		#frame2=Tkinter.LabelFrame(self,text="INFOMATIONS SUR MACHINE CIBLE",borderwidth=2,width=100,height=100,relief=Tkinter.GROOVE)
-		#frame2.pack()
-		#frame2.grid(column=0,row=1,sticky="EW",pady=10,padx=30)
-		#frame3=Tkinter.LabelFrame(self,text="AUTRES INFORMATIONS SUR L'ATTAQUE",borderwidth=2,width=100,height=100,relief=Tkinter.GROOVE)
-		#frame3.pack()
-		#frame3.grid(column=0,row=2,sticky="EW",pady=10,padx=30)
-		
-		#self.frame1.pack_propagate(False)	
-		#frame2.pack_propagate(False)
-		#frame3.pack_propagate(False)
+		self.frame2.master.rowconfigure(0, weight=1)
+		self.frame2.master.columnconfigure(0, weight=1)
+		self.frame2.rowconfigure(0, weight=1)
+		self.frame2.columnconfigure(0, weight=1)
 		
 		##variable de colonnes et lignes
 		x=0
@@ -60,63 +56,92 @@ class test_fenetre(Tkinter.Tk):
 
 		#REMPLISSAGE DU PANNEAU CONCERNANT L'ORDINATEUR ATTAQUANT
 		f1t1=Tkinter.Label(self.frame1,text="INFORMATIONS SUR L'ATTAQUE:",height=5,fg="blue",anchor="w")
-		f1t1.grid(column=x,row=y,sticky="w")
+		f1t1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 		
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		y=(y+1)
-		self.f1l1=Tkinter.Label(self.frame1, text="ADRESSES IP A ATTAQUER:",width=25,anchor="e")
-		self.f1l1.grid(column=x,row=y,sticky="e")
+		self.f1l1=Tkinter.Label(self.frame1, text="ADRESSES IP A ATTAQUER:",height=2,width=25,anchor="e")
+		self.f1l1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		self.f1t1=Tkinter.StringVar()
 		self.f1t1.set("")
 		self.f1z1=Tkinter.Entry(self.frame1,textvariable=self.f1t1,width=30)
-		self.f1z1.grid(column=x,row=y,sticky="w",padx=5)
+		self.f1z1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W,padx=5)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		self.f1z1.bind("<Enter>",self.ip_source_hover_in)
 		self.f1z1.bind("<Leave>",self.ip_source_hover_out)
 		x=(x+1)%2
 		y=y+1
 		self.f1l2=Tkinter.Label(self.frame1, text="ADRESSE IP DONT L'ADRESSE MAC SERA USURPEE:",height=2,anchor="e")
-		self.f1l2.grid(column=x,row=y,sticky="e")
+		self.f1l2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		self.f1t2=Tkinter.StringVar()
 		self.f1t2.set("")
 		self.f1z2=Tkinter.Entry(self.frame1,textvariable=self.f1t2,width=30)
-		self.f1z2.grid(column=x,row=y,sticky="w",padx=5)
+		self.f1z2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W,padx=5)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		y=(y+1)		
 		
-		#f3l2=Tkinter.Label(self.frame1, text="NOMBRE DE PAQUETS:",height=2,anchor="e")
-		#f3l2.grid(column=x,row=y,sticky="E")
-		#x=(x+1)%2
-		#self.f3t2=Tkinter.StringVar()
-		#self.f3t2.set("")
-		#self.f3z2=Tkinter.Entry(self.frame1,textvariable=self.f3t2,width=20)
-		#self.f3z2.grid(column=x,row=y,sticky="W",padx=5)
-		#x=(x+1)%2
-		#y=(y+1)
 
 		f3l3=Tkinter.Label(self.frame1, text="INTERVALLE DE TEMPS ENTRE DEUX PAQUETS:",height=2,anchor="e")
-		f3l3.grid(column=x,row=y,sticky="E")
+		f3l3.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		self.f3t3=Tkinter.StringVar()
 		self.f3t3.set("")
 		self.f3z3=Tkinter.Entry(self.frame1,textvariable=self.f3t3,width=10)
-		self.f3z3.grid(column=x,row=y,sticky="W",padx=5)
+		self.f3z3.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W,padx=5)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		y=(y+1)
 
-		#f3l4=Tkinter.Label(self.frame1, text="INTERFACE:",height=2,anchor="e")
-		#f3l4.grid(column=x,row=y,sticky="E")
-		#x=(x+1)%2
-		#self.f3t4=Tkinter.StringVar()
-		#self.f3t4.set("")
-		#self.f3z4=Tkinter.Entry(self.frame1,textvariable=self.f3t4,width=10)
-		#self.f3z4.grid(column=x,row=y,sticky="W",padx=5)
-		#x=(x+1)%2
-		#y=(y+1)
 
 		
 		f3l4=Tkinter.Label(self.frame1, text="INTERFACE:",height=2,anchor="e")
-		f3l4.grid(column=x,row=y,sticky="E")
+		f3l4.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		self.commande="netstat -i | cut -d' ' -f1 |grep [0-9]$"
 		self.t=int(commands.getoutput(self.commande+"|grep [0-9]$ -c"))
@@ -134,7 +159,13 @@ class test_fenetre(Tkinter.Tk):
 		self.inter_sel.set("")
 		self.ma_liste=ttk.Combobox(self.frame1, textvariable = self.inter_sel,values = self.mes_interfaces, state = 'readonly')
 		self.inter_sel.set(self.mes_interfaces[0])
-		self.ma_liste.grid(column=x,row=y,sticky="W",padx="5")
+		self.ma_liste.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W,padx="5")
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		y=(y+1)
 		
@@ -152,10 +183,23 @@ class test_fenetre(Tkinter.Tk):
 
 		## CREATION DES BOUTONS LANCER ET STOPPER
 		self.f4b1 = Tkinter.Button(self.frame1,text="LANCER",command=self.OnButtonLaunch,relief=Tkinter.RAISED)
-		self.f4b1.grid(column=x,row=y,sticky="w")
+		self.f4b1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		self.f4b2 = Tkinter.Button(self.frame1,text="ARRETER",command=self.OnButtonStop,relief=Tkinter.RAISED)
-		self.f4b2.grid(column=x,row=y,sticky="e")
+		self.f4b2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
+		self.f4b2.config(state=Tkinter.DISABLED)
 
 		
 
@@ -278,12 +322,9 @@ class test_fenetre(Tkinter.Tk):
 		#print("Tentative d'arret d'envoi des paquet")
 		self.attack.stop()
 		self.f4b2.config(state=Tkinter.DISABLED)
-		#while(self.attack.isAlive()):
-		#	time.sleep(0,2)
-		#print("Vous avez clique sur le button arreter")
+
 		print("ARRET EVENTUEL DE L'ATTAQUE PRECEDENTE")
-		#self.labelVariable.set("Vous avez clique sur le button")
-		#self.labelVariable.set(self.entryVariable.get()+"Vous avez cliquez sur le button")	
+	
 
 	def OnButtonClear(self):
 		

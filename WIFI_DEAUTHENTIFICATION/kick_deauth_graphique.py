@@ -246,14 +246,6 @@ class test_fenetre(Tkinter.Tk):
 		self.frame1.rowconfigure(y, weight=1)
 		self.frame1.columnconfigure(x, weight=1)
 
-		
-		fake3=Tkinter.Label(self.frame1, text="",height=2,anchor="e")
-		fake3.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
-
-		self.frame1.master.rowconfigure(y, weight=1)
-		self.frame1.master.columnconfigure(x, weight=1)
-		self.frame1.rowconfigure(y, weight=1)
-		self.frame1.columnconfigure(x, weight=1)
 
 		x=(x+1)%2
 		x=(x+1)%2

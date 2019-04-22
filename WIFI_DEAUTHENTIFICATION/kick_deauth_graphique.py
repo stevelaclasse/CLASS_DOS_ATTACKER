@@ -35,15 +35,27 @@ class test_fenetre(Tkinter.Tk):
 
 	def initialize(self):
 		self["bg"]="green"
-	
-		self.frame1=Tkinter.Frame(self,borderwidth=2,width=100,height=100,relief=Tkinter.GROOVE)
+		
+
+		self.frame1=Tkinter.Frame(self,borderwidth=2,relief=Tkinter.GROOVE)
 		#self.frame1.pack()
 		self.frame1.grid(column=0,row=0,sticky="EW",pady=10,padx=30)
+		
+		
+		self.frame1.master.rowconfigure(0, weight=1)
+		self.frame1.master.columnconfigure(0, weight=1)
+		self.frame1.rowconfigure(0, weight=1)
+		self.frame1.columnconfigure(0, weight=1)
+		
 
-		self.frame2=Tkinter.LabelFrame(self,text="AFFICHAGE DES LOGS",borderwidth=2,height=10,relief=Tkinter.GROOVE)
+		self.frame2=Tkinter.LabelFrame(self,text="AFFICHAGE DES LOGS",borderwidth=2,relief=Tkinter.GROOVE)
 		#self.frame1.pack()
 		self.frame2.grid(column=0,row=1,pady=10,padx=30)
 
+		self.frame2.master.rowconfigure(0, weight=1)
+		self.frame2.master.columnconfigure(0, weight=1)
+		self.frame2.rowconfigure(0, weight=1)
+		self.frame2.columnconfigure(0, weight=1)
 
 		#frame2=Tkinter.LabelFrame(self,text="INFOMATIONS SUR MACHINE CIBLE",borderwidth=2,width=100,height=100,relief=Tkinter.GROOVE)
 		#frame2.pack()
@@ -62,57 +74,122 @@ class test_fenetre(Tkinter.Tk):
 
 		#REMPLISSAGE DU PANNEAU CONCERNANT L'ORDINATEUR ATTAQUANT
 		f1t1=Tkinter.Label(self.frame1,text="INFORMATIONS SUR L'ATTAQUE:",height=5,fg="blue",anchor="w")
-		f1t1.grid(column=x,row=y,sticky="w")
+		f1t1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 		
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		y=(y+1)
 		self.f1l1=Tkinter.Label(self.frame1, text="ADRESSES MAC A ATTAQUER:",anchor="e")
-		self.f1l1.grid(column=x,row=y,sticky="e")
+		self.f1l1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		self.f1t1=Tkinter.StringVar()
 		self.f1t1.set("")
 		self.f1z1=Tkinter.Entry(self.frame1,textvariable=self.f1t1,width=30)
-		self.f1z1.grid(column=x,row=y,sticky="w",padx=5)
+		self.f1z1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W,padx=5)
 		self.f1z1.bind("<Enter>",self.ip_source_hover_in)
 		self.f1z1.bind("<Leave>",self.ip_source_hover_out)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		y=y+1
 		self.f1l2=Tkinter.Label(self.frame1, text="ADRESSE MAC DU POINT D'ACCES SANS FIL:",height=2,anchor="e")
-		self.f1l2.grid(column=x,row=y,sticky="e")
+		self.f1l2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		self.f1t2=Tkinter.StringVar()
 		self.f1t2.set("")
 		self.f1z2=Tkinter.Entry(self.frame1,textvariable=self.f1t2,width=30)
-		self.f1z2.grid(column=x,row=y,sticky="w",padx=5)
+		self.f1z2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W,padx=5)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		y=(y+1)		
 		
 		f3l5=Tkinter.Label(self.frame1, text="CANNAL DU POINT D'ACCES SANS FIL:",height=2,anchor="e")
-		f3l5.grid(column=x,row=y,sticky="E")
+		f3l5.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		self.f3t5=Tkinter.StringVar()
 		self.f3t5.set("")
 		self.f3z5=Tkinter.Entry(self.frame1,textvariable=self.f3t5,width=10)
-		self.f3z5.grid(column=x,row=y,sticky="W",padx=5)
+		self.f3z5.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W,padx=5)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		y=(y+1)
 		
 		f3l2=Tkinter.Label(self.frame1, text="NOMBRE DE PAQUETS:",height=2,anchor="e")
-		f3l2.grid(column=x,row=y,sticky="E")
+		f3l2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		self.f3t2=Tkinter.StringVar()
 		self.f3t2.set("")
 		self.f3z2=Tkinter.Entry(self.frame1,textvariable=self.f3t2,width=20)
-		self.f3z2.grid(column=x,row=y,sticky="W",padx=5)
+		self.f3z2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W,padx=5)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		y=(y+1)
 
 		f3l3=Tkinter.Label(self.frame1, text="INTERVALLE DE TEMPS ENTRE DEUX PAQUETS:",height=2,anchor="e")
-		f3l3.grid(column=x,row=y,sticky="E")
+		f3l3.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		self.f3t3=Tkinter.StringVar()
 		self.f3t3.set("")
 		self.f3z3=Tkinter.Entry(self.frame1,textvariable=self.f3t3,width=10)
-		self.f3z3.grid(column=x,row=y,sticky="W",padx=5)
+		self.f3z3.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W,padx=5)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		y=(y+1)
 
@@ -128,7 +205,13 @@ class test_fenetre(Tkinter.Tk):
 
 		
 		f3l4=Tkinter.Label(self.frame1, text="INTERFACE:",height=2,anchor="e")
-		f3l4.grid(column=x,row=y,sticky="E")
+		f3l4.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		self.commande="netstat -i | cut -d' ' -f1 |grep [0-9]$"
 		self.t=int(commands.getoutput(self.commande+"|grep [0-9]$ -c"))
@@ -146,7 +229,13 @@ class test_fenetre(Tkinter.Tk):
 		self.inter_sel.set("")
 		self.ma_liste=ttk.Combobox(self.frame1, textvariable = self.inter_sel,values = self.mes_interfaces, state = 'readonly')
 		self.inter_sel.set(self.mes_interfaces[0])
-		self.ma_liste.grid(column=x,row=y,sticky="W",padx="5")
+		self.ma_liste.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W,padx="5")
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		y=(y+1)
 
@@ -157,7 +246,13 @@ class test_fenetre(Tkinter.Tk):
 		#print(str(y))	
 	
 		fake1=Tkinter.Label(self.frame1, text="",height=2,anchor="e")
-		fake1.grid(column=x,row=y,sticky="E")
+		fake1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		x=(x+1)%2
 		y=(y+1)
@@ -170,16 +265,34 @@ class test_fenetre(Tkinter.Tk):
 
 		#CREATION DU BOUTON DU SNIFF
 		self.f4b3 = Tkinter.Button(self.frame1,text="SNIFFER LES PAQUETS",command=self.OnButtonSniff,relief=Tkinter.RAISED)
-		self.f4b3.grid(column=x,row=y,sticky="e")
+		self.f4b3.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		
 		fake3=Tkinter.Label(self.frame1, text="",height=2,anchor="e")
-		fake3.grid(column=x,row=y,sticky="E")
+		fake3.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		x=(x+1)%2
 		y=(y+1)		
 
 		fake4=Tkinter.Label(self.frame1, text="",height=2,anchor="e")
-		fake4.grid(column=x,row=y,sticky="E")
+		fake4.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		x=(x+1)%2
 		y=(y+1)	
@@ -205,16 +318,28 @@ class test_fenetre(Tkinter.Tk):
 
 		## CREATION DES BOUTONS LANCER ET STOPPER
 		self.f4b1 = Tkinter.Button(self.frame1,text="LANCER",command=self.OnButtonLaunch,relief=Tkinter.RAISED)
-		self.f4b1.grid(column=x,row=y,sticky="w")
+		self.f4b1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 		x=(x+1)%2
 		self.f4b2 = Tkinter.Button(self.frame1,text="ARRETER",command=self.OnButtonStop,relief=Tkinter.RAISED)
-		self.f4b2.grid(column=x,row=y,sticky="e")
+		self.f4b2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(y, weight=1)
+		self.frame1.master.columnconfigure(x, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
 
 		x=(x+1)%2
 		x=(x+1)%2
 		y=(y+1)
-
 		
+	
 
 		##LES INFO BULLES POUR GUIDER L'UTILISATEUR   (pierjean sur le forum Developpez.net)
  

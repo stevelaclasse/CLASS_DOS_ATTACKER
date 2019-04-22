@@ -31,38 +31,73 @@ class test_fenetre(Tkinter.Tk):
 		##variable de colonnes et lignes
 		x=0
 		y=0
-
+		self.frame1.rowconfigure(0, weight=1)
+		self.frame1.master.rowconfigure(0, weight=1)
+		self.frame1.master.columnconfigure(0, weight=1)
+		self.frame1.columnconfigure(0, weight=1)
 
 		## CREATION DES BOUTONS
 
 
-		## Uncomments this section for the Five Attacks
-
 		self.f1b1 = Tkinter.Button(self.frame1,text="ICMP FLOOD",bg="#40E0D0",activebackground="#00FFFF",cursor="spider",height=5,width=25,command=self.icmp,relief=Tkinter.RAISED)
-		self.f1b1.grid(column=x,row=y,sticky="w")
+		self.f1b1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(0, weight=1)
+		self.frame1.master.columnconfigure(0, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
 		x=(x+2)%3  
+		
+		
 
 		self.f1b2 = Tkinter.Button(self.frame1,text="TCP SYN FLOOD",bg="#40E0D0",activebackground="#00FFFF",cursor="spider",height=5,width=25,command=self.tcp,relief=Tkinter.RAISED)
-		self.f1b2.grid(column=x,row=y,sticky="e")
+		self.f1b2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
+		self.frame1.master.rowconfigure(0, weight=1)
+		self.frame1.master.columnconfigure(0, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
 
 		x=(x+2)%3
 		y=(y+1)
 
 		self.f1b3 = Tkinter.Button(self.frame1,text="ARP CACHE POISONING",bg="#40E0D0",activebackground="#00FFFF",cursor="spider",height=5,width=25,command=self.arp,relief=Tkinter.RAISED)
-		self.f1b3.grid(column=x,row=y,sticky="w")
+		self.f1b3.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(0, weight=1)
+		self.frame1.master.columnconfigure(0, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
 
 		x=(x+2)%3
 		y=(y+1)
 		self.f1b4 = Tkinter.Button(self.frame1,text="DHCP STARVATION",bg="#40E0D0",activebackground="#00FFFF",cursor="spider",height=5,width=25,command=self.dhcp,relief=Tkinter.RAISED)
-		self.f1b4.grid(column=x,row=y,sticky="e")
+		self.f1b4.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(0, weight=1)
+		self.frame1.master.columnconfigure(0, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
 
 
 		x=(x+2)%3
 		self.f1b5 = Tkinter.Button(self.frame1,text="WIFI DEAUTHENTIFICATION",bg="#40E0D0",activebackground="#00FFFF",cursor="spider",height=5,width=25,command=self.kick,relief=Tkinter.RAISED)
-		self.f1b5.grid(column=x,row=y,sticky="w")
+		self.f1b5.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
+
+		self.frame1.master.rowconfigure(0, weight=1)
+		self.frame1.master.columnconfigure(0, weight=1)
+		self.frame1.rowconfigure(y, weight=1)
+		self.frame1.columnconfigure(x, weight=1)
+
+		#GESTION DU REZIZE DE LA FENETRE
+
+		#for row_index in range(0,2):
+    		#	self.frame1.rowconfigure(row_index, weight=1)
+		#	self.frame1.master.rowconfigure(row_index, weight=1)
 		
-		
+		#for column_index in range(0,3):
+    		#	self.frame1.columnconfigure(column_index, weight=1)
+		#	self.frame1.master.columnconfigure(column_index, weight=1)
 
 		
 		## CREATION DE LA BARRE DE MENU

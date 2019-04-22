@@ -1,7 +1,7 @@
 # CLASS_DOS_ATTACKER
-A Software for educational purpose of learning and implementing Denial of Service Attacks
+A Software for educational purpose of learning and implementing Denial of Service Attacks in Python.
 
-Le Projet CLASS_DOS_ATTACKER est a la base juste un petit tools permettant de tester les attaques basiques de type deni de service, il est livré pour 5 attaques :
+Le Projet CLASS_DOS_ATTACKER est a la base juste un petit tool permettant de tester les attaques basique de type deni de service, il est livré pour 5 attaques :
 
 - ARP Cache poisonning
 

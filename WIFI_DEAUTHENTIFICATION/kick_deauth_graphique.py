@@ -82,7 +82,7 @@ class test_fenetre(Tkinter.Tk):
 		self.frame1.columnconfigure(x, weight=1)
 
 		y=(y+1)
-		self.f1l1=Tkinter.Label(self.frame1, text="ADRESSES MAC A ATTAQUER:",anchor="e")
+		self.f1l1=Tkinter.Label(self.frame1, text="ADRESSES MAC A ATTAQUER:",height=2,anchor="e")
 		self.f1l1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -94,7 +94,7 @@ class test_fenetre(Tkinter.Tk):
 		self.f1t1=Tkinter.StringVar()
 		self.f1t1.set("")
 		self.f1z1=Tkinter.Entry(self.frame1,textvariable=self.f1t1,width=30)
-		self.f1z1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W,padx=5)
+		self.f1z1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W,padx=5,pady=0)
 		self.f1z1.bind("<Enter>",self.ip_source_hover_in)
 		self.f1z1.bind("<Leave>",self.ip_source_hover_out)
 

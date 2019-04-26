@@ -51,8 +51,16 @@ class arp_spoof(threading.Thread):
 		
 		##TEST DE L'INTERFACE D'ENVOI
 		if(interface != ""):
-			print("interface non choisie automatiquement")
+			print("interface not chosen automatically")
 			conf.iface=interface
+		else:
+			print("interface chosen automatically")
+
+
+		if(interface != ""):
+			print("PACKETS SENDING INTERFACE:"+interface)
+		else:
+			print("PACKETS SENDING INTERFACE:"+conf.iface)
 
 		
 
@@ -82,10 +90,10 @@ class arp_spoof(threading.Thread):
 		
 		print("etat du verrou="+str(arp_spoof_graphique.verrou.locked()))
 		if(arp_spoof_graphique.verrou.locked()):
-			print("\n ERREUR ATTAQUE EN COURS DETECTEE")
+			print("\n ERROR ANOTHER ATTACK IN PROGRESS DETECTED")
 			#sys.exit(1)
 		else:
-			print("\n AUCUNE ATTAQUE EN COURS DETECTEE\n")
+			print("\n NO ATTACK IN PROGRESS DETECTED\n")
 
 			arp_spoof_graphique.verrou.acquire()
 
@@ -101,7 +109,7 @@ class arp_spoof(threading.Thread):
 			time.sleep(3)
 			#self.arret=False
 			
-			print("\n Lancement de l'attaque ARP SPOOF --"+time.ctime()+"\n")
+			print("\n Starting the Attack ARP Cache Poisoning --"+time.ctime()+"\n")
 
 			if(self.ip_src==""):			
 
@@ -123,9 +131,9 @@ class arp_spoof(threading.Thread):
 					#print("Fin des Traitements, arret de l'attaque")
 					#print("arret="+str(self.arret))
 					if(not self.stopper.isSet()):
-						print("FIN D'EMISSIONS DES PAQUETS"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS"+time.ctime()+"\n")
 					else:
-						print("FIN D'EMISSIONS DES PAQUETS (L'ATTAQUE A ETE STOPPER PAR L'UTILISATEUR)"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS (THE ATTACK HAS BEEN STOPPED BY THE USER)"+time.ctime()+"\n")
 				else:
 					i=0
 					for i in range(0,self.n):
@@ -147,9 +155,9 @@ class arp_spoof(threading.Thread):
 					#print("arret="+str(self.arret))
 					#print("Fin des Traitements, arret de l'attaque")
 					if(not self.stopper.isSet()):
-						print("FIN D'EMISSIONS DES PAQUETS"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS"+time.ctime()+"\n")
 					else:
-						print("FIN D'EMISSIONS DES PAQUETS (L'ATTAQUE A ETE STOPPER PAR L'UTILISATEUR)"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS (THE ATTACK HAS BEEN STOPPED BY THE USER)"+time.ctime()+"\n")
 			else:
 
 				if(self.n == -1):
@@ -170,9 +178,9 @@ class arp_spoof(threading.Thread):
 					#print("Fin des Traitements, arret de l'attaque")
 					#print("arret="+str(self.arret))
 					if(not self.stopper.isSet()):
-						print("FIN D'EMISSIONS DES PAQUETS"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS"+time.ctime()+"\n")
 					else:
-						print("FIN D'EMISSIONS DES PAQUETS (L'ATTAQUE A ETE STOPPER PAR L'UTILISATEUR)"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS (THE ATTACK HAS BEEN STOPPED BY THE USER)"+time.ctime()+"\n")
 				else:
 					i=0
 					for i in range(0,self.n):
@@ -194,9 +202,9 @@ class arp_spoof(threading.Thread):
 					#print("arret="+str(self.arret))
 					#print("Fin des Traitements, arret de l'attaque")
 					if(not self.stopper.isSet()):
-						print("FIN D'EMISSIONS DES PAQUETS"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS"+time.ctime()+"\n")
 					else:
-						print("FIN D'EMISSIONS DES PAQUETS (L'ATTAQUE A ETE STOPPER PAR L'UTILISATEUR)"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS (THE ATTACK HAS BEEN STOPPED BY THE USER)"+time.ctime()+"\n")
 
 			arp_spoof_graphique.verrou.release()
 				#tcp_syn_graphique_2.edit_verrou(False)

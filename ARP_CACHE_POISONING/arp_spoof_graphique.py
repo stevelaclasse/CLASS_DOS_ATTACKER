@@ -25,7 +25,7 @@ class test_fenetre(Tkinter.Tk):
 		verrou=threading.Lock()
 		self.attack=ma_thread_arp_spoof.arp_spoof(self.f1t1.get(),self.f1t2.get(),"",self.f3t3.get(),self.ma_liste.get())
 		if os.getuid() != 0: 
-    			showerror("ERREUR DROITS D'ACCES"," vous devez executer ce programme en administrateur")
+    			showerror("ERROR ACCESS RIGHTS"," you must run this program as an administrator")
     			sys.exit(1)
 		
 		
@@ -42,7 +42,7 @@ class test_fenetre(Tkinter.Tk):
 		self.frame1.rowconfigure(0, weight=1)
 		self.frame1.columnconfigure(0, weight=1)
 
-		self.frame2=Tkinter.LabelFrame(self,text="AFFICHAGE DES LOGS",borderwidth=2,height=10,relief=Tkinter.GROOVE)
+		self.frame2=Tkinter.LabelFrame(self,text="LOGS DISPLAY",borderwidth=2,height=10,relief=Tkinter.GROOVE)
 		self.frame2.grid(column=0,row=1,pady=10,padx=30)
 
 		self.frame2.master.rowconfigure(0, weight=1)
@@ -55,7 +55,7 @@ class test_fenetre(Tkinter.Tk):
 		y=0
 
 		#REMPLISSAGE DU PANNEAU CONCERNANT L'ORDINATEUR ATTAQUANT
-		f1t1=Tkinter.Label(self.frame1,text="INFORMATIONS SUR L'ATTAQUE:",height=5,fg="blue",anchor="w")
+		f1t1=Tkinter.Label(self.frame1,text="ATTACK INFORMATIONS:",height=5,fg="blue",anchor="w")
 		f1t1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 		
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -64,7 +64,7 @@ class test_fenetre(Tkinter.Tk):
 		self.frame1.columnconfigure(x, weight=1)
 
 		y=(y+1)
-		self.f1l1=Tkinter.Label(self.frame1, text="ADRESSES IP A ATTAQUER:",height=2,width=25,anchor="e")
+		self.f1l1=Tkinter.Label(self.frame1, text="IP ADDRESSES TO ATTACK:",height=2,width=25,anchor="e")
 		self.f1l1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -87,7 +87,7 @@ class test_fenetre(Tkinter.Tk):
 		self.f1z1.bind("<Leave>",self.ip_source_hover_out)
 		x=(x+1)%2
 		y=y+1
-		self.f1l2=Tkinter.Label(self.frame1, text="ADRESSE IP DONT L'ADRESSE MAC SERA USURPEE:",height=2,anchor="e")
+		self.f1l2=Tkinter.Label(self.frame1, text="IP ADDRESS WHOSE MAC ADDRESS WILL BE USURPED:",height=2,anchor="e")
 		self.f1l2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -110,7 +110,7 @@ class test_fenetre(Tkinter.Tk):
 		y=(y+1)		
 		
 
-		f3l3=Tkinter.Label(self.frame1, text="INTERVALLE DE TEMPS ENTRE DEUX PAQUETS:",height=2,anchor="e")
+		f3l3=Tkinter.Label(self.frame1, text="TIME INTERVAL BETWEEN TWO PACKETS:",height=2,anchor="e")
 		f3l3.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -182,7 +182,7 @@ class test_fenetre(Tkinter.Tk):
 		
 
 		## CREATION DES BOUTONS LANCER ET STOPPER
-		self.f4b1 = Tkinter.Button(self.frame1,text="LANCER",command=self.OnButtonLaunch,relief=Tkinter.RAISED)
+		self.f4b1 = Tkinter.Button(self.frame1,text="START",command=self.OnButtonLaunch,relief=Tkinter.RAISED)
 		self.f4b1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -191,7 +191,7 @@ class test_fenetre(Tkinter.Tk):
 		self.frame1.columnconfigure(x, weight=1)
 
 		x=(x+1)%2
-		self.f4b2 = Tkinter.Button(self.frame1,text="ARRETER",command=self.OnButtonStop,relief=Tkinter.RAISED)
+		self.f4b2 = Tkinter.Button(self.frame1,text="STOP",command=self.OnButtonStop,relief=Tkinter.RAISED)
 		self.f4b2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -204,57 +204,42 @@ class test_fenetre(Tkinter.Tk):
 		
 
 		##LES INFO BULLES POUR GUIDER L'UTILISATEUR   (pierjean sur le forum Developpez.net)
- 
-		#info_bulle=Tix.Balloon()
-		#info_bulle.bind_widget(f1z1,msg="LAISSER VIDE POUR UTILISER VOTRE PROPRE ADRESSE IP")
-		infoBulle_class.infoBulle(parent=self.f1z1,texte="SEPARER LES ADDRESSES IP PAR DES ';' OU UTILISER LE '-' POUR INDIQUER UNE PLAGES D'IP \n PRECISER A OU B OU C POUR LES CLASSES A, B OU C. EXEMPLE: 192.168.11.3-192.168.11.8 C \n ADRESSE DE LA MACHINE QUI NE POURRA PAS JOINDRE LA MACHINE CIBLE \n SI VOUS LAISSER CE CHAMP VIDE, TOUT LE RESEAU SERA PRIS POUR CIBLE")
-		infoBulle_class.infoBulle(parent=self.f1z2,texte="PRECISER L'ADRESSE IP DE LA MACHINE DONT VOUS NE VOULEZ PAS QU'ELLE SOIT JOIGNABLE \nPAR LES AUTRES MACHINE DU RESEAU \n METTEZ L'ADRESSE IP DE LA PASSERELLE POUR BLOQUER L'ACCES HORS DU RESEAU")
-		#infoBulle(parent=self.f2z1,texte="L'ADRESSE IP DE DESTINATION EST OBLIGATOIRE")
-		#infoBulle(parent=self.f2z2,texte="LE PORT DE DESTINATION EST OBLIGATOIRE")
-		#infoBulle(parent=self.f3z1,texte="LAISSER VIDE POUR DES NUMEROS DE SEQUENCE ALEATOIRES \n OU SINON LES NUMEROS DE SEQUENCE SERONT CHOISIS ALEATOIREMENT \n ENTRE LES DEUX NOMBRES VALEUR1 ET VALEUR2 \n POUR CHAQUE PAQUETS ENVOYES")
-		#infoBulle_class.infoBulle(parent=self.f3z2,texte="LAISSER VIDE POUR UN NOMBRE ILLIMITE DE PAQUETS")
-		infoBulle_class.infoBulle(parent=self.f3z3,texte="LAISSER VIDE POUR ENVOYER LES PAQUETS SANS INTERRUPTION")
-		#infoBulle_class.infoBulle(parent=self.f3z4,texte="LAISSER VIDE POUR UTILISER UNE L'UNE DES INTERFACES LIBRE DE VOTRE MACHINE")
-		infoBulle_class.infoBulle(parent=self.ma_liste,texte="CHOISISSEZ L'INTERFACE D'ENVOI DES PAQUETS \n LAISSER VIDE POUR UTILISER L'UNE DES INTERFACES LIBRE DE VOTRE MACHINE")
+
+		infoBulle_class.infoBulle(parent=self.f1z1,texte="SEPARATE IP ADDRESSES BY ';' OR USE THE '-' TO INDICATE AN IP RANGE \n SPECIFY A OR B OR C FOR CLASSES A, B OR C. EXAMPLE: 192.168.11.3-192.168.11.8 C \n ADDRESS OF THE MACHINE THAT WOULD NOT JOIN THE TARGET MACHINE \n IF YOU LEAVE THIS EMPTY FIELD, ALL NETWORK WILL BE TAKEN FOR TARGET")
+		infoBulle_class.infoBulle(parent=self.f1z2,texte="SPECIFY THE IP ADDRESS OF THE MACHINE YOU DO NOT WANT TO BE JOINABLE \n BY OTHER MACHINES IN THE NETWORK \n SET THE IP ADDRESS OF THE GATEWAY TO BLOCK ACCESS OUTSIDE THE NETWORK")
+		infoBulle_class.infoBulle(parent=self.f3z3,texte="LEAVE EMPTY TO SEND PACKAGES WITHOUT INTERRUPTION")
+		infoBulle_class.infoBulle(parent=self.ma_liste,texte="CHOOSE THE INTERFACE TO SEND THE PACKETS \n LEAVE EMPTY TO USE ONE OF THE FREE INTERFACES OF YOUR MACHINE")
 
 		##CREATION DE LA ZONE DE TEXTE POUR LE LOG DE L'EXECUTION DU PROGRAMME
 
-		self.f4b3 = Tkinter.Button(self.frame2,text="EFFACER",command=self.OnButtonClear,relief=Tkinter.RAISED)
+		self.f4b3 = Tkinter.Button(self.frame2,text="CLEAR",command=self.OnButtonClear,relief=Tkinter.RAISED)
 		self.f4b3.pack(side=Tkinter.BOTTOM)
 
 		self.monlog=Tkinter.Text(self.frame2,width=75,height=15)
-		#self.monlog.focus_set()
-		#self.monlog.bind("<<Change>>",self.scroll_text)
-		#self.monlog.grid(column=0,row=0)
 		self.monlog.pack(side=Tkinter.LEFT)
-		#self.monlog.insert(Tkinter.END,"BONJOUR LES TESTS")
 		self.scroll_bar=Tkinter.Scrollbar(self.frame2)
 		self.scroll_bar.pack(side=Tkinter.RIGHT,fill=Tkinter.Y)
 		self.scroll_bar.config(command=self.monlog.yview)
 		self.monlog.config(yscrollcommand=self.scroll_bar.set)
 		self.add_timestamp()
-
-
-		#self.scroll_bar.grid(column=1,row=0)
 		
 		
 		## CREATION DE LA BARRE DE MENU
 		self.Barre_Menu=Tkinter.Menu(self)
 		self.col1=Tkinter.Menu(self.Barre_Menu,tearoff=0)
-		'''col1.add_command(label="Nouveau",command=self.info_box)'''
-		self.col1.add_command(label="Enregister Parametres",command=self.info_box)
+		self.col1.add_command(label="Save Settings",command=self.info_box)
 		self.col1.add_separator()
-		self.col1.add_command(label="Fermer",command=self.quit)
-		self.Barre_Menu.add_cascade(label="Fichier",menu=self.col1)
+		self.col1.add_command(label="Quit",command=self.quit)
+		self.Barre_Menu.add_cascade(label="File",menu=self.col1)
 	
 		self.col2=Tkinter.Menu(self.Barre_Menu)
-		self.col2.add_command(label="Charger Parametres par defaut",command=self.charger_default)
-		self.col2.add_command(label="Charger Parametres depuis un fichier",command=self.info_box)
+		self.col2.add_command(label="Load Default Settings",command=self.charger_default)
+		self.col2.add_command(label="Load Settings from a file",command=self.info_box)
 		self.Barre_Menu.add_cascade(label="Edition",menu=self.col2)
 
 		self.col3=Tkinter.Menu(self.Barre_Menu)
-		self.col3.add_command(label="Aide",command=self.info_box)
-		self.col3.add_command(label="A Propos",command=self.info_box)
+		self.col3.add_command(label="Help",command=self.info_box)
+		self.col3.add_command(label="ABout",command=self.info_box)
 		self.Barre_Menu.add_cascade(label="?",menu=self.col3)
 		
 		self.config(menu=self.Barre_Menu)
@@ -296,13 +281,13 @@ class test_fenetre(Tkinter.Tk):
 	def OnButtonLaunch(self):
 		#self.f2l1.config(fg="black")
 		#self.f2l2.config(fg="black")
-		print("Vous avez clique sur le button lancer")
+		print("STARTING THE ATTACK")
 		#self.labelVariable.set("Vous avez clique sur le button")
 		#self.labelVariable.set(self.entryVariable.get()+"Vous avez cliquez sur le button")
 		#attack=tcp_syn(self.f1t1.get(),self.f1t2.get(),self.f2t1.get(),self.f2t2.get(),self.f3t1.get(),self.f3t2.get(),self.f3t3.get(),self.f3t4.get())
 		#attack.start()
 		if(verrou.locked()):
-			print("\n ERREUR LANCEMENT ATTAQUE,UNE AUTRE EN COURS EST DETECTEE")
+			print("\n ERROR LAUNCHING THE ATTACK, ANOTHER ATTACK IN PROGRESS DETECTED")
 		#print("Vous avez clique sur le button lancer")
 		#self.labelVariable.set("Vous avez clique sur le button")
 		#self.labelVariable.set(self.entryVariable.get()+"Vous avez cliquez sur le button")
@@ -319,11 +304,10 @@ class test_fenetre(Tkinter.Tk):
 
 	def OnButtonStop(self):
 		
-		#print("Tentative d'arret d'envoi des paquet")
 		self.attack.stop()
 		self.f4b2.config(state=Tkinter.DISABLED)
 
-		print("ARRET EVENTUEL DE L'ATTAQUE PRECEDENTE")
+		print("TRYING TO STOP A POSSIBLE PREVIOUS ATTACK")
 	
 
 	def OnButtonClear(self):
@@ -332,11 +316,10 @@ class test_fenetre(Tkinter.Tk):
 		self.monlog_content=0
 	
 	def message_box(self):
-		#print("VERIFICATION VOUS VOUS VRAIMENT FAIRE CELA")
-		showinfo("MESSAGE","ACTION PRISE EN COMPTE")	
+		showinfo("MESSAGE","NOT AVAILABLE")	
 
 	def info_box(self):
-		print("INFORMATIONS DE MESSAGE")
+		print("NOT AVAILABLE")
 
 	
 

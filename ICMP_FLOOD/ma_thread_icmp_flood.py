@@ -41,10 +41,10 @@ class icmp_flood(threading.Thread):
 
 		##TEST DE L'INTERFACE D'ENVOI
 		if(interface != ""):
-			print("interface non choisie automatiquement")
+			print("interface not chosen automatically")
 			conf.iface=interface
 		else:
-			print("interface choisie automatiquement")
+			print("interface chosen automatically")
 		
 
 		if(interface != ""):
@@ -134,10 +134,10 @@ class icmp_flood(threading.Thread):
 		
 		print("etat du verrou="+str(icmp_flood_graphique.verrou.locked()))
 		if(icmp_flood_graphique.verrou.locked()):
-			print("\n ERREUR ATTAQUE EN COURS DETECTEE")
+			print("\n ERROR ANOTHER ATTACK IN PROGRESS DETECTED")
 			#sys.exit(1)
 		else:
-			print("\n AUCUNE ATTAQUE EN COURS DETECTEE\n")
+			print("\n NO ATTACK IN PROGRESS DETECTED\n")
 
 			icmp_flood_graphique.verrou.acquire()
 
@@ -152,7 +152,7 @@ class icmp_flood(threading.Thread):
 		
 			time.sleep(3)
 
-			print("\n Lancement de l'attaque ICMP FLOOD --"+time.ctime()+"\n")
+			print("\n Starting the Attack ICMP FLOOD --"+time.ctime()+"\n")
 			#self.arret=False
 			
 			
@@ -181,9 +181,9 @@ class icmp_flood(threading.Thread):
 					#print("Fin des Traitements, arret de l'attaque")
 					#print("arret="+str(self.arret))
 					if(not self.stopper.isSet()):
-						print("FIN D'EMISSIONS DES PAQUETS"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS"+time.ctime()+"\n")
 					else:
-						print("FIN D'EMISSIONS DES PAQUETS (L'ATTAQUE A ETE STOPPER PAR L'UTILISATEUR)"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS (THE ATTACK HAS BEEN STOPPED BY THE USER)"+time.ctime()+"\n")
 				else:
 					i=0
 					for i in range(0,self.n):
@@ -205,9 +205,9 @@ class icmp_flood(threading.Thread):
 					#print("arret="+str(self.arret))
 					#print("Fin des Traitements, arret de l'attaque")
 					if(not self.stopper.isSet()):
-						print("FIN D'EMISSIONS DES PAQUETS")
+						print("END OF PACKET EMISSIONS")
 					else:
-						print("FIN D'EMISSIONS DES PAQUETS (L'ATTAQUE A ETE STOPPER PAR L'UTILISATEUR)"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS (THE ATTACK HAS BEEN STOPPED BY THE USER)"+time.ctime()+"\n")
 			else:
 
 				self.ether.show()
@@ -231,9 +231,9 @@ class icmp_flood(threading.Thread):
 					#print("Fin des Traitements, arret de l'attaque")
 					#print("arret="+str(self.arret))
 					if(not self.stopper.isSet()):
-						print("FIN D'EMISSIONS DES PAQUETS"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS"+time.ctime()+"\n")
 					else:
-						print("FIN D'EMISSIONS DES PAQUETS (L'ATTAQUE A ETE STOPPER PAR L'UTILISATEUR)"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS (THE ATTACK HAS BEEN STOPPED BY THE USER)"+time.ctime()+"\n")
 				else:
 					i=0
 					for i in range(0,self.n):
@@ -255,9 +255,9 @@ class icmp_flood(threading.Thread):
 					#print("arret="+str(self.arret))
 					#print("Fin des Traitements, arret de l'attaque")
 					if(not self.stopper.isSet()):
-						print("FIN D'EMISSIONS DES PAQUETS"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS"+time.ctime()+"\n")
 					else:
-						print("FIN D'EMISSIONS DES PAQUETS (L'ATTAQUE A ETE STOPPER PAR L'UTILISATEUR)"+time.ctime()+"\n")
+						print("END OF PACKET EMISSIONS (THE ATTACK HAS BEEN STOPPED BY THE USER)"+time.ctime()+"\n")
 
 			icmp_flood_graphique.verrou.release()
 				#tcp_syn_graphique_2.edit_verrou(False)

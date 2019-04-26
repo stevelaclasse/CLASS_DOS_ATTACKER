@@ -48,9 +48,9 @@ class icmp_flood(threading.Thread):
 		
 
 		if(interface != ""):
-			print("INTERFACE D'ENVOI DES PAQUETS:"+interface)
+			print("PACKETS SENDING INTERFACE:"+interface)
 		else:
-			print("INTERFACE D'ENVOI DES PAQUETS:"+conf.iface)
+			print("PACKETS SENDING INTERFACE:"+conf.iface)
 
 		#self.interface=conf.iface
 

@@ -23,7 +23,6 @@ class test_fenetre(Tkinter.Tk):
 		self.initialize()
 		global verrou
 		verrou=threading.Lock()
-		#self.attack=ma_thread_icmp_flood.icmp_flood(self.f1t1.get(),self.f1t1_1.get(),self.f1t2.get(),self.f1t3.get(),self.f3t2.get(),self.f3t3.get(),self.f3t4.get())
 		self.attack=ma_thread_icmp_flood.icmp_flood(self.f1t1.get(),self.f1t1_1.get(),self.f1t2.get(),self.f1t3.get(),"",self.f3t3.get(),self.ma_liste.get(),int(self.bande.get()))
 		if os.getuid() != 0: 
     			showerror("ERROR ACCESS RIGHTS"," you must run this program as an administrator")
@@ -36,7 +35,6 @@ class test_fenetre(Tkinter.Tk):
 		self["bg"]="green"
 	
 		self.frame1=Tkinter.Frame(self,borderwidth=2,width=100,height=100,relief=Tkinter.GROOVE)
-		#self.frame1.pack()
 		self.frame1.grid(column=0,row=0,sticky="EW",pady=10,padx=30)
 
 		self.frame1.master.rowconfigure(0, weight=1)
@@ -46,7 +44,6 @@ class test_fenetre(Tkinter.Tk):
 
 
 		self.frame2=Tkinter.LabelFrame(self,text="LOGS DISPLAY",borderwidth=2,height=10,relief=Tkinter.GROOVE)
-		#self.frame1.pack()
 		self.frame2.grid(column=0,row=1,pady=10,padx=30)
 
 		self.frame2.master.rowconfigure(0, weight=1)
@@ -60,7 +57,7 @@ class test_fenetre(Tkinter.Tk):
 		y=0
 
 		#REMPLISSAGE DU PANNEAU CONCERNANT L'ORDINATEUR ATTAQUANT
-		f1t1=Tkinter.Label(self.frame1,text="ATTACK INFORMATIONS:",height=5,fg="blue",anchor="w")
+		f1t1=Tkinter.Label(self.frame1,text="ATTACK INFORMATIONS",height=5,fg="blue",anchor="w")
 		f1t1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 		
 
@@ -172,9 +169,6 @@ class test_fenetre(Tkinter.Tk):
 		self.frame1.columnconfigure(x, weight=1)
 
 		x=(x+1)%2
-		#self.f3t2=Tkinter.StringVar()
-		#self.f3t2.set("")
-		#self.f3z2=Tkinter.Entry(self.frame1,textvariable=self.f3t2,width=20)
 		self.bande = Tkinter.Scale(self.frame1,orient='horizontal', showvalue=1,length=245, from_=0, to=65507)
 		self.bande.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W,padx=5)
 
@@ -183,7 +177,6 @@ class test_fenetre(Tkinter.Tk):
 		self.frame1.rowconfigure(y, weight=1)
 		self.frame1.columnconfigure(x, weight=1)
 
-		#self.f3z2.grid(column=x,row=y,sticky="W",padx=5)
 		x=(x+1)%2
 		y=(y+1)
 
@@ -285,16 +278,14 @@ class test_fenetre(Tkinter.Tk):
 
 		##LES INFO BULLES POUR GUIDER L'UTILISATEUR   (pierjean sur le forum Developpez.net)
  
-		#info_bulle=Tix.Balloon()
-		#info_bulle.bind_widget(f1z1,msg="LAISSER VIDE POUR UTILISER VOTRE PROPRE ADRESSE IP")
-		infoBulle_class.infoBulle(parent=self.f1z1,texte="SEPARATE IP ADDRESSES BY ';' OR USE THE '-' TO INDICATE AN IP RANGE \n SPECIFY A OR B OR C FOR CLASSES A, B OR C. EXAMPLE: 192.168.11.3-192.168.11.8 C \n ADDRESS OF THE MACHINE THAT WOULD NOT JOIN THE TARGET MACHINE \n IF YOU LEAVE THIS EMPTY FIELD, ALL NETWORK WILL BE TAKEN FOR TARGET")
+		infoBulle_class.infoBulle(parent=self.f1z1,texte="SEPARATE IP ADDRESSES BY ';' OR USE THE '-' TO INDICATE AN IP RANGE \n SPECIFY A OR B OR C FOR CLASSES A, B OR C. EXAMPLE: 192.168.11.3-192.168.11.8 C \n ADDRESS OF THE MACHINE THAT WOULD NOT JOIN THE TARGET MACHINE \n IF YOU LEAVE THIS EMPTY FIELD, THE BROADCAST ADDRESS (255.255.255.255) WILL BE USED")
 		
 		infoBulle_class.infoBulle(parent=self.f1z1_1,texte="MAC ADDRESS OF IP ADDRESS TO ATTACK \n YOU CAN LEAVE THIS MAC ADDRESS FIELD AND THE FOLLOWING EMPTY, \n BUT IN THIS CASE YOUR MAC ADDRESS WILL BE VISIBLE DURING THE NETWORK ANALYSIS \n HOWEVER IF YOU LET THIS FIELD EMPTY BUT COMPLETE THE FOLLOWING, \n IF THE MACHINE IS IN YOUR SUB-NETWORK, THEN THIS FIELD WILL INCLUDE ITS MAC ADDRESS, \n OTHERWISE THE BROADCAST MAC ADDRESS")		
 
 		infoBulle_class.infoBulle(parent=self.f1z2,texte="SPECIFY THE IP ADDRESS THAT WOULD BE INCLUDED IN THE PACKETS SENT \n IF YOU LEAVE THIS FIELD EMPTY, YOUR IP ADDRESS WILL BE USED")
 		infoBulle_class.infoBulle(parent=self.f1z3,texte="SPECIFY THE MAC ADDRESS THAT WOULD BE INCLUDED IN THE PACKETS SENT \n IF YOU LEAVE THIS FIELD EMPTY, YOUR MAC ADDRESS WILL BE USED")
 
-		infoBulle_class.infoBulle(parent=self.f3z3,texte="LEAVE EMPTY TO SEND PACKAGES WITHOUT INTERRUPTION")
+		infoBulle_class.infoBulle(parent=self.f3z3,texte="LEAVE EMPTY TO SEND PACKETS WITHOUT INTERRUPTION")
 
 		infoBulle_class.infoBulle(parent=self.ma_liste,texte="CHOOSE THE INTERFACE TO SEND THE PACKETS \n LEAVE EMPTY TO USE ONE OF THE FREE INTERFACES OF YOUR MACHINE")
 		
@@ -307,16 +298,12 @@ class test_fenetre(Tkinter.Tk):
 		self.monlog=Tkinter.Text(self.frame2,width=75,height=15)
 
 		self.monlog.pack(side=Tkinter.LEFT)
-		#self.monlog.insert(Tkinter.END,"BONJOUR LES TESTS")
 		self.scroll_bar=Tkinter.Scrollbar(self.frame2)
 		self.scroll_bar.pack(side=Tkinter.RIGHT,fill=Tkinter.Y)
 		self.scroll_bar.config(command=self.monlog.yview)
 		self.monlog.config(yscrollcommand=self.scroll_bar.set)
 		self.add_timestamp()
 
-		
-
-		#self.scroll_bar.grid(column=1,row=0)
 		
 		
 		## CREATION DE LA BARRE DE MENU
@@ -349,25 +336,14 @@ class test_fenetre(Tkinter.Tk):
 
 
 	def add_timestamp(self):
-		
-		#if len(self.monlog.get("1.0","end"))%2 == 0:
 		if len(self.monlog.get("1.0","end")) > self.monlog_content :
-			#print(self.monlog_content)
 			self.monlog.see("end")
-      		  	#self.monlog.config(bg='red')
-   		#else:
-      		#  	self.monlog.config(bg='blue')
-		#self.monlog.insert("end", time.ctime() + "\n")
-		#self.monlog.see("end")
 		self.monlog_content=len(self.monlog.get("1.0","end"))
 		self.after(100, self.add_timestamp)
 
 	def charger_default(self):
 		
 		self.f1t1.set("")
-		#self.f3t1.set("1-1000000")
-		#self.f2l1.config(fg="red")
-		#self.f2l2.config(fg="red")
 		
 
 	def ip_source_hover_in(self):
@@ -375,40 +351,20 @@ class test_fenetre(Tkinter.Tk):
 	def ip_source_hover_out(self):
 		print("OUT")		
 	def OnButtonLaunch(self):
-		#self.f2l1.config(fg="black")
-		#self.f2l2.config(fg="black")
 		print("STARTING THE ATTACK")
-		#self.labelVariable.set("Vous avez clique sur le button")
-		#self.labelVariable.set(self.entryVariable.get()+"Vous avez cliquez sur le button")
-		#attack=tcp_syn(self.f1t1.get(),self.f1t2.get(),self.f2t1.get(),self.f2t2.get(),self.f3t1.get(),self.f3t2.get(),self.f3t3.get(),self.f3t4.get())
-		#attack.start()
 		if(verrou.locked()):
 			print("\n ERROR LAUNCHING THE ATTACK, ANOTHER ATTACK IN PROGRESS DETECTED")
-		#print("Vous avez clique sur le button lancer")
-		#self.labelVariable.set("Vous avez clique sur le button")
-		#self.labelVariable.set(self.entryVariable.get()+"Vous avez cliquez sur le button")
-			#self.attack=True
 		else:
-			#self.attack=ma_thread_icmp_flood.icmp_flood(self.f1t1.get(),self.f1t1_1.get(),self.f1t2.get(),self.f1t3.get(),self.f3t2.get(),self.f3t3.get(),self.f3t4.get())
 			self.attack=ma_thread_icmp_flood.icmp_flood(self.f1t1.get(),self.f1t1_1.get(),self.f1t2.get(),self.f1t3.get(),"",self.f3t3.get(),self.ma_liste.get(),int(self.bande.get()))
-			#self.attack.stop()
 			self.attack.start()
-			#print("thread_alive="+str(self.thread_alive))
-		#self.f4b1.config(state=Tkinter.DISABLED)
 		self.f4b2.config(state=Tkinter.NORMAL)
 		
 
 	def OnButtonStop(self):
 		
-		#print("Tentative d'arret d'envoi des paquet")
 		self.attack.stop()
 		self.f4b2.config(state=Tkinter.DISABLED)
-		#while(self.attack.isAlive()):
-		#	time.sleep(0,2)
-		#print("Vous avez clique sur le button arreter")
-		print("TRYING TO STOP A POSSIBLE PREVIOUS ATTACK")
-		#self.labelVariable.set("Vous avez clique sur le button")
-		#self.labelVariable.set(self.entryVariable.get()+"Vous avez cliquez sur le button")	
+		print("TRYING TO STOP A POSSIBLE PREVIOUS ATTACK")	
 
 	def OnButtonClear(self):
 		
@@ -416,7 +372,6 @@ class test_fenetre(Tkinter.Tk):
 		self.monlog_content=0
 
 	def message_box(self):
-		#print("VERIFICATION VOUS VOUS VRAIMENT FAIRE CELA")
 		showinfo("MESSAGE","NOT AVAILABLE")	
 
 	def info_box(self):

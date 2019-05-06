@@ -55,7 +55,7 @@ class test_fenetre(Tkinter.Tk):
 		y=0
 
 		#REMPLISSAGE DU PANNEAU CONCERNANT L'ORDINATEUR ATTAQUANT
-		f1t1=Tkinter.Label(self.frame1,text="ATTACK INFORMATIONS:",height=5,fg="blue",anchor="w")
+		f1t1=Tkinter.Label(self.frame1,text="ATTACK INFORMATIONS",height=5,fg="blue",anchor="w")
 		f1t1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 		
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -207,7 +207,7 @@ class test_fenetre(Tkinter.Tk):
 
 		infoBulle_class.infoBulle(parent=self.f1z1,texte="SEPARATE IP ADDRESSES BY ';' OR USE THE '-' TO INDICATE AN IP RANGE \n SPECIFY A OR B OR C FOR CLASSES A, B OR C. EXAMPLE: 192.168.11.3-192.168.11.8 C \n ADDRESS OF THE MACHINE THAT WOULD NOT JOIN THE TARGET MACHINE \n IF YOU LEAVE THIS EMPTY FIELD, ALL NETWORK WILL BE TAKEN FOR TARGET")
 		infoBulle_class.infoBulle(parent=self.f1z2,texte="SPECIFY THE IP ADDRESS OF THE MACHINE YOU DO NOT WANT TO BE JOINABLE \n BY OTHER MACHINES IN THE NETWORK \n SET THE IP ADDRESS OF THE GATEWAY TO BLOCK ACCESS OUTSIDE THE NETWORK")
-		infoBulle_class.infoBulle(parent=self.f3z3,texte="LEAVE EMPTY TO SEND PACKAGES WITHOUT INTERRUPTION")
+		infoBulle_class.infoBulle(parent=self.f3z3,texte="LEAVE EMPTY TO SEND PACKETS WITHOUT INTERRUPTION")
 		infoBulle_class.infoBulle(parent=self.ma_liste,texte="CHOOSE THE INTERFACE TO SEND THE PACKETS \n LEAVE EMPTY TO USE ONE OF THE FREE INTERFACES OF YOUR MACHINE")
 
 		##CREATION DE LA ZONE DE TEXTE POUR LE LOG DE L'EXECUTION DU PROGRAMME
@@ -254,24 +254,15 @@ class test_fenetre(Tkinter.Tk):
 
 	def add_timestamp(self):
 		
-		#if len(self.monlog.get("1.0","end"))%2 == 0:
+
 		if len(self.monlog.get("1.0","end")) > self.monlog_content :
-			#print(self.monlog_content)
 			self.monlog.see("end")
-      		  	#self.monlog.config(bg='red')
-   		#else:
-      		#  	self.monlog.config(bg='blue')
-		#self.monlog.insert("end", time.ctime() + "\n")
-		#self.monlog.see("end")
 		self.monlog_content=len(self.monlog.get("1.0","end"))
 		self.after(100, self.add_timestamp)
 
 	def charger_default(self):
 		
 		self.f1t1.set("")
-		#self.f3t1.set("1-1000000")
-		#self.f2l1.config(fg="red")
-		#self.f2l2.config(fg="red")
 		
 
 	def ip_source_hover_in(self):
@@ -279,26 +270,14 @@ class test_fenetre(Tkinter.Tk):
 	def ip_source_hover_out(self):
 		print("OUT")		
 	def OnButtonLaunch(self):
-		#self.f2l1.config(fg="black")
-		#self.f2l2.config(fg="black")
+
 		print("STARTING THE ATTACK")
-		#self.labelVariable.set("Vous avez clique sur le button")
-		#self.labelVariable.set(self.entryVariable.get()+"Vous avez cliquez sur le button")
-		#attack=tcp_syn(self.f1t1.get(),self.f1t2.get(),self.f2t1.get(),self.f2t2.get(),self.f3t1.get(),self.f3t2.get(),self.f3t3.get(),self.f3t4.get())
-		#attack.start()
+
 		if(verrou.locked()):
 			print("\n ERROR LAUNCHING THE ATTACK, ANOTHER ATTACK IN PROGRESS DETECTED")
-		#print("Vous avez clique sur le button lancer")
-		#self.labelVariable.set("Vous avez clique sur le button")
-		#self.labelVariable.set(self.entryVariable.get()+"Vous avez cliquez sur le button")
-			#self.attack=True
 		else:
-			#self.attack=ma_thread_arp_spoof.arp_spoof(self.f1t1.get(),self.f1t2.get(),self.f3t2.get(),self.f3t3.get(),self.f3t4.get())
 			self.attack=ma_thread_arp_spoof.arp_spoof(self.f1t1.get(),self.f1t2.get(),"",self.f3t3.get(),self.ma_liste.get())
-			#self.attack.stop()
 			self.attack.start()
-			#print("thread_alive="+str(self.thread_alive))
-		#self.f4b1.config(state=Tkinter.DISABLED)
 		self.f4b2.config(state=Tkinter.NORMAL)
 		
 

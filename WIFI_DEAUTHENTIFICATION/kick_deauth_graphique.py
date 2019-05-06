@@ -24,10 +24,9 @@ class test_fenetre(Tkinter.Tk):
 		self.initialize()
 		global verrou
 		verrou=threading.Lock()
-		#self.attack=ma_thread_kick_deauth.kick_deauth(self.f1t1.get(),self.f1t2.get(),self.f3t5.get(),self.f3t2.get(),self.f3t2.get(),self.f3t4.get())
 		self.attack=ma_thread_kick_deauth.kick_deauth(self.f1t1.get(),self.f1t2.get(),self.f3t5.get(),self.f3t2.get(),self.f3t2.get(),self.ma_liste.get())
 		if os.getuid() != 0: 
-    			showerror("ERREUR DROITS D'ACCES"," vous devez executer ce programme en administrateur")
+    			showerror("ERROR ACCESS RIGHTS"," you must run this program as an administrator")
     			sys.exit(1)
 		
 		
@@ -38,7 +37,6 @@ class test_fenetre(Tkinter.Tk):
 		
 
 		self.frame1=Tkinter.Frame(self,borderwidth=2,relief=Tkinter.GROOVE)
-		#self.frame1.pack()
 		self.frame1.grid(column=0,row=0,sticky="EW",pady=10,padx=30)
 		
 		
@@ -48,8 +46,7 @@ class test_fenetre(Tkinter.Tk):
 		self.frame1.columnconfigure(0, weight=1)
 		
 
-		self.frame2=Tkinter.LabelFrame(self,text="AFFICHAGE DES LOGS",borderwidth=2,relief=Tkinter.GROOVE)
-		#self.frame1.pack()
+		self.frame2=Tkinter.LabelFrame(self,text="LOGS DISPLAY",borderwidth=2,relief=Tkinter.GROOVE)
 		self.frame2.grid(column=0,row=1,pady=10,padx=30)
 
 		self.frame2.master.rowconfigure(0, weight=1)
@@ -62,7 +59,7 @@ class test_fenetre(Tkinter.Tk):
 		y=0
 
 		#REMPLISSAGE DU PANNEAU CONCERNANT L'ORDINATEUR ATTAQUANT
-		f1t1=Tkinter.Label(self.frame1,text="INFORMATIONS SUR L'ATTAQUE:",height=5,fg="blue",anchor="w")
+		f1t1=Tkinter.Label(self.frame1,text="ATTACK INFORMATIONS",height=5,fg="blue",anchor="w")
 		f1t1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 		
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -71,7 +68,7 @@ class test_fenetre(Tkinter.Tk):
 		self.frame1.columnconfigure(x, weight=1)
 
 		y=(y+1)
-		self.f1l1=Tkinter.Label(self.frame1, text="ADRESSES MAC A ATTAQUER:",height=2,anchor="e")
+		self.f1l1=Tkinter.Label(self.frame1, text="MAC ADDRESSES TO ATTACK:",height=2,anchor="e")
 		self.f1l1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -94,7 +91,7 @@ class test_fenetre(Tkinter.Tk):
 
 		x=(x+1)%2
 		y=y+1
-		self.f1l2=Tkinter.Label(self.frame1, text="ADRESSE MAC DU POINT D'ACCES SANS FIL:",height=2,anchor="e")
+		self.f1l2=Tkinter.Label(self.frame1, text="MAC ADDRESS OF THE WIRELESS ACCESS POINT:",height=2,anchor="e")
 		self.f1l2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -116,7 +113,7 @@ class test_fenetre(Tkinter.Tk):
 		x=(x+1)%2
 		y=(y+1)		
 		
-		f3l5=Tkinter.Label(self.frame1, text="CANNAL DU POINT D'ACCES SANS FIL:",height=2,anchor="e")
+		f3l5=Tkinter.Label(self.frame1, text="WIRELESS ACCESS POINT CHANNEL:",height=2,anchor="e")
 		f3l5.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -138,7 +135,7 @@ class test_fenetre(Tkinter.Tk):
 		x=(x+1)%2
 		y=(y+1)
 		
-		f3l2=Tkinter.Label(self.frame1, text="NOMBRE DE PAQUETS:",height=2,anchor="e")
+		f3l2=Tkinter.Label(self.frame1, text="NUMBER OF PACKETS:",height=2,anchor="e")
 		f3l2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -160,7 +157,7 @@ class test_fenetre(Tkinter.Tk):
 		x=(x+1)%2
 		y=(y+1)
 
-		f3l3=Tkinter.Label(self.frame1, text="INTERVALLE DE TEMPS ENTRE DEUX PAQUETS:",height=2,anchor="e")
+		f3l3=Tkinter.Label(self.frame1, text="TIME INTERVAL BETWEEN TWO PACKETS:",height=2,anchor="e")
 		f3l3.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -222,8 +219,7 @@ class test_fenetre(Tkinter.Tk):
 		x=(x+1)%2
 		x=(x+1)%2
 		y=(y+1)
-
-		#print(str(y))	
+	
 	
 		fake1=Tkinter.Label(self.frame1, text="",height=2,anchor="e")
 		fake1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
@@ -238,7 +234,7 @@ class test_fenetre(Tkinter.Tk):
 		y=(y+1)
 
 		#CREATION DU BOUTON DU SNIFF
-		self.f4b3 = Tkinter.Button(self.frame1,text="SNIFFER LES PAQUETS",command=self.OnButtonSniff,relief=Tkinter.RAISED)
+		self.f4b3 = Tkinter.Button(self.frame1,text="CAPTURE (SNIFF) THE PACKETS",command=self.OnButtonSniff,relief=Tkinter.RAISED)
 		self.f4b3.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -266,12 +262,9 @@ class test_fenetre(Tkinter.Tk):
 		x=(x+1)%2
 		x=(x+1)%2
 		y=(y+1)
-		
-
-		#print(str(y))
 
 		## CREATION DES BOUTONS LANCER ET STOPPER
-		self.f4b1 = Tkinter.Button(self.frame1,text="LANCER",command=self.OnButtonLaunch,relief=Tkinter.RAISED)
+		self.f4b1 = Tkinter.Button(self.frame1,text="START",command=self.OnButtonLaunch,relief=Tkinter.RAISED)
 		self.f4b1.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -280,7 +273,7 @@ class test_fenetre(Tkinter.Tk):
 		self.frame1.columnconfigure(x, weight=1)
 
 		x=(x+1)%2
-		self.f4b2 = Tkinter.Button(self.frame1,text="ARRETER",command=self.OnButtonStop,relief=Tkinter.RAISED)
+		self.f4b2 = Tkinter.Button(self.frame1,text="STOP",command=self.OnButtonStop,relief=Tkinter.RAISED)
 		self.f4b2.grid(column=x,row=y,sticky=Tkinter.N+Tkinter.S+Tkinter.E+Tkinter.W)
 
 		self.frame1.master.rowconfigure(y, weight=1)
@@ -298,22 +291,16 @@ class test_fenetre(Tkinter.Tk):
 
 		##LES INFO BULLES POUR GUIDER L'UTILISATEUR   (pierjean sur le forum Developpez.net)
  
-		#info_bulle=Tix.Balloon()
-		#info_bulle.bind_widget(f1z1,msg="LAISSER VIDE POUR UTILISER VOTRE PROPRE ADRESSE IP")
-		infoBulle_class.infoBulle(parent=self.f1z1,texte="SEPARER LES ADDRESSES MAC PAR DES ';' \n SI VOUS LAISSER CE CHAMP VIDE, TOUT LE RESEAU SERA PRIS POUR CIBLE")
-		infoBulle_class.infoBulle(parent=self.f1z2,texte="PRECISER L'ADRESSE MAC DU POINT D'ACCES SANS FIL")
-		#infoBulle(parent=self.f2z1,texte="L'ADRESSE IP DE DESTINATION EST OBLIGATOIRE")
-		#infoBulle(parent=self.f2z2,texte="LE PORT DE DESTINATION EST OBLIGATOIRE")
-		#infoBulle(parent=self.f3z1,texte="LAISSER VIDE POUR DES NUMEROS DE SEQUENCE ALEATOIRES \n OU SINON LES NUMEROS DE SEQUENCE SERONT CHOISIS ALEATOIREMENT \n ENTRE LES DEUX NOMBRES VALEUR1 ET VALEUR2 \n POUR CHAQUE PAQUETS ENVOYES")
-		infoBulle_class.infoBulle(parent=self.f3z2,texte="LAISSER VIDE POUR UN NOMBRE ILLIMITE DE PAQUETS")
-		infoBulle_class.infoBulle(parent=self.f3z3,texte="LAISSER VIDE POUR ENVOYER LES PAQUETS SANS INTERRUPTION")
-		#infoBulle_class.infoBulle(parent=self.f3z4,texte="LAISSER VIDE POUR UTILISER UNE L'INTERFACE wlan0")
-		infoBulle_class.infoBulle(parent=self.ma_liste,texte="CHOISISSEZ L'INTERFACE D'ENVOI DES PAQUETS \n LAISSER VIDE POUR UTILISER L'UNE DES INTERFACES LIBRE DE VOTRE MACHINE")
-		infoBulle_class.infoBulle(parent=self.f3z5,texte="PRECISER  LE CANNAL(CHANNEL) DU POINT D'ACCES SANS FIL")
+		infoBulle_class.infoBulle(parent=self.f1z1,texte="SEPARATE MAC ADDRESSES BY '; '\n' IF YOU LEAVE THIS FIELD EMPTY, THE WHOLE NETWORK WILL BE TAKEN TO TARGET")
+		infoBulle_class.infoBulle(parent=self.f1z2,texte="SPECIFY THE MAC ADDRESS OF THE WIRELESS ACCESS POINT")
+		infoBulle_class.infoBulle(parent=self.f3z2,texte="LEAVE EMPTY FOR AN UNLIMITED NUMBER OF PACKETS")
+		infoBulle_class.infoBulle(parent=self.f3z3,texte="LEAVE EMPTY TO SEND PACKETS WITHOUT INTERRUPTION")
+		infoBulle_class.infoBulle(parent=self.ma_liste,texte="CHOOSE THE INTERFACE TO SEND THE PACKETS \n LEAVE EMPTY TO USE ONE OF THE FREE INTERFACES OF YOUR MACHINE")
+		infoBulle_class.infoBulle(parent=self.f3z5,texte="SPECIFY THE CHANNEL OF THE WIRELESS ACCESS POINT")
 
 		##CREATION DE LA ZONE DE TEXTE POUR LE LOG DE L'EXECUTION DU PROGRAMME
 
-		self.f4b3 = Tkinter.Button(self.frame2,text="EFFACER",command=self.OnButtonClear,relief=Tkinter.RAISED)
+		self.f4b3 = Tkinter.Button(self.frame2,text="CLEAR",command=self.OnButtonClear,relief=Tkinter.RAISED)
 		self.f4b3.pack(side=Tkinter.BOTTOM)
 
 		self.monlog=Tkinter.Text(self.frame2,width=75,height=15)
@@ -325,13 +312,8 @@ class test_fenetre(Tkinter.Tk):
 		self.scroll_bar1.config(command=self.monlog.xview)
 		self.monlog.config(xscrollcommand=self.scroll_bar1.set, wrap=Tkinter.NONE)		
 
-
-		#self.monlog.focus_set()
-		#self.monlog.bind("<<Change>>",self.scroll_text)
-		#self.monlog.grid(column=0,row=0)
 		self.monlog.pack(side=Tkinter.LEFT)
 
-		#self.monlog.insert(Tkinter.END,"BONJOUR LES TESTS")
 		self.scroll_bar=Tkinter.Scrollbar(self.frame2)
 		self.scroll_bar.pack(side=Tkinter.RIGHT,fill=Tkinter.Y)
 		self.scroll_bar.config(command=self.monlog.yview)
@@ -340,28 +322,24 @@ class test_fenetre(Tkinter.Tk):
 		
 
 		self.add_timestamp()
-
-
-		#self.scroll_bar.grid(column=1,row=0)
 		
 		
 		## CREATION DE LA BARRE DE MENU
 		self.Barre_Menu=Tkinter.Menu(self)
 		self.col1=Tkinter.Menu(self.Barre_Menu,tearoff=0)
-		'''col1.add_command(label="Nouveau",command=self.info_box)'''
-		self.col1.add_command(label="Enregister Parametres",command=self.info_box)
+		self.col1.add_command(label="Save Settings",command=self.info_box)
 		self.col1.add_separator()
-		self.col1.add_command(label="Fermer",command=self.quit)
-		self.Barre_Menu.add_cascade(label="Fichier",menu=self.col1)
+		self.col1.add_command(label="Quit",command=self.quit)
+		self.Barre_Menu.add_cascade(label="File",menu=self.col1)
 	
 		self.col2=Tkinter.Menu(self.Barre_Menu)
-		self.col2.add_command(label="Charger Parametres par defaut",command=self.charger_default)
-		self.col2.add_command(label="Charger Parametres depuis un fichier",command=self.info_box)
+		self.col2.add_command(label="Load Default Settings",command=self.charger_default)
+		self.col2.add_command(label="Load Settings from a file",command=self.info_box)
 		self.Barre_Menu.add_cascade(label="Edition",menu=self.col2)
 
 		self.col3=Tkinter.Menu(self.Barre_Menu)
-		self.col3.add_command(label="Aide",command=self.info_box)
-		self.col3.add_command(label="A Propos",command=self.info_box)
+		self.col3.add_command(label="Help",command=self.info_box)
+		self.col3.add_command(label="ABout",command=self.info_box)
 		self.Barre_Menu.add_cascade(label="?",menu=self.col3)
 		
 		self.config(menu=self.Barre_Menu)
@@ -375,26 +353,14 @@ class test_fenetre(Tkinter.Tk):
 		print ("Modification")
 
 	def add_timestamp(self):
-		
-		
-		#if len(self.monlog.get("1.0","end"))%2 == 0:
 		if len(self.monlog.get("1.0","end")) > self.monlog_content :
-			#print(self.monlog_content)
 			self.monlog_content=len(self.monlog.get("1.0","end"))
 			self.monlog.see("end")
-      		  	#self.monlog.config(bg='red')
-   		#else:
-      		#  	self.monlog.config(bg='blue')
-		#self.monlog.insert("end", time.ctime() + "\n")
-		#self.monlog.see("end")
 		self.after(100, self.add_timestamp)
 
 	def charger_default(self):
 		
 		self.f1t1.set("")
-		#self.f3t1.set("1-1000000")
-		#self.f2l1.config(fg="red")
-		#self.f2l2.config(fg="red")
 		
 
 	def ip_source_hover_in(self):
@@ -402,40 +368,19 @@ class test_fenetre(Tkinter.Tk):
 	def ip_source_hover_out(self):
 		print("OUT")		
 	def OnButtonLaunch(self):
-		#self.f2l1.config(fg="black")
-		#self.f2l2.config(fg="black")
-		print("Vous avez clique sur le button lancer")
-		#self.labelVariable.set("Vous avez clique sur le button")
-		#self.labelVariable.set(self.entryVariable.get()+"Vous avez cliquez sur le button")
-		#attack=tcp_syn(self.f1t1.get(),self.f1t2.get(),self.f2t1.get(),self.f2t2.get(),self.f3t1.get(),self.f3t2.get(),self.f3t3.get(),self.f3t4.get())
-		#attack.start()
+		print("STARTING THE ATTACK")
 		if(verrou.locked()):
-			print("\n ERREUR LANCEMENT ATTAQUE,UNE AUTRE EN COURS EST DETECTEE")
-		#print("Vous avez clique sur le button lancer")
-		#self.labelVariable.set("Vous avez clique sur le button")
-		#self.labelVariable.set(self.entryVariable.get()+"Vous avez cliquez sur le button")
-			#self.attack=True
+			print("\n ERROR LAUNCHING THE ATTACK, ANOTHER ATTACK IN PROGRESS DETECTED")
 		else:
-			#self.attack=ma_thread_kick_deauth.kick_deauth(self.f1t1.get(),self.f1t2.get(),self.f3t5.get(),self.f3t2.get(),self.f3t3.get(),self.f3t4.get())
 			self.attack=ma_thread_kick_deauth.kick_deauth(self.f1t1.get(),self.f1t2.get(),self.f3t5.get(),self.f3t2.get(),self.f3t3.get(),self.ma_liste.get())
-			#self.attack.stop()
 			self.attack.start()
-			#print("thread_alive="+str(self.thread_alive))
-		#self.f4b1.config(state=Tkinter.DISABLED)
 		self.f4b2.config(state=Tkinter.NORMAL)
 		
 
 	def OnButtonStop(self):
-		
-	#print("Tentative d'arret d'envoi des paquet")
 		self.attack.stop()
 		self.f4b2.config(state=Tkinter.DISABLED)
-		#while(self.attack.isAlive()):
-		#	time.sleep(0,2)
-		#print("Vous avez clique sur le button arreter")
-		print("ARRET EVENTUEL DE L'ATTAQUE PRECEDENTE")
-		#self.labelVariable.set("Vous avez clique sur le button")
-		#self.labelVariable.set(self.entryVariable.get()+"Vous avez cliquez sur le button")
+		print("TRYING TO STOP A POSSIBLE PREVIOUS ATTACK")
 	
 	def OnButtonClear(self):
 		
@@ -448,18 +393,11 @@ class test_fenetre(Tkinter.Tk):
 	
 
 		self.deactivate_buttons()
-		
-		
-
-		
-		
-		#time.sleep(3)
-
+						
 		current_iface=self.ma_liste.get()
-		print("CAPTURE DES PAQUETS SUR L'INTERFACE:"+current_iface)
+		print("CAPTURE OF PACKETS ON THE INTERFACE:"+current_iface)
 
 		if(current_iface==""):
-			#current_iface="wlan0"
 			current_iface=conf.iface		
 		
 		os.system("ifconfig "+current_iface+" down")
@@ -478,8 +416,6 @@ class test_fenetre(Tkinter.Tk):
 		for line in (airodump.stdout):
 			print line
 
-		
-		#print airodump.stdout.read()
 
 		self.activate_buttons()
 		
@@ -493,15 +429,8 @@ class test_fenetre(Tkinter.Tk):
 		self.f4b1.config(state=Tkinter.DISABLED)
 
 	def message_box(self):
-		#print("VERIFICATION VOUS VOUS VRAIMENT FAIRE CELA")
-		showinfo("MESSAGE","ACTION PRISE EN COMPTE")	
+		showinfo("MESSAGE","NOT AVAILABLE")	
 
 	def info_box(self):
-		print("INFORMATIONS DE MESSAGE")
+		print("NOT AVAILABLE")
 
-	
-if __name__ == "__main__":
-	app=test_fenetre(None)
-	app.title("ATTAQUE DE DEAUTHENTIFICATION")
-	app.mainloop()
-	

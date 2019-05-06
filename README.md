@@ -1,24 +1,24 @@
 # CLASS_DOS_ATTACKER
 A Software for educational purpose of learning and implementing Denial of Service Attacks in Python.
 
-Le Projet CLASS_DOS_ATTACKER est a la base juste un petit tool permettant de tester les attaques basique de type deni de service, il est livré pour 5 attaques :
+The CLASS_DOS_ATTACKER Project is basically just a small tool to test basic denial of service attacks, it is delivered for 5 attacks :
 
-- ARP Cache poisonning
+  -  ARP Cache poisonning
 
-- DHCP Starvation
+   - DHCP Starvation
 
-- ICMP FLOOD
+  -  ICMP FLOOD
 
-- TCP SYNFLOOD
+  -  TCP SYNFLOOD
 
-- WIFI DEAUTHENTIFICATION
+  -  WIFI DEAUTHENTICATION
 
-Le code n'est pas vraiment professionnel, car il a été écrit à la hâte dans le but de réaliser le test de ces attaques
+The code is not really professional, as it was hastily written in order to test these attacks
 
-le code de source est donc disponible pour Ajout/Modification/Mis à jour d'une attaque
+the source code is therefore available for Adding/Modifying/Updating an attack
 
-l'application peut également être traduite en English si les utilisateurs manifestent un intérêt pour une traduction.
+the application was initially written in French but was later tranlated in english in order to be publish.
 
-sinon, elle permet déja une bonne prise en main de ces 5 attaques DOS.
+otherwise, it already allows a good handling of these 5 DOS attacks.
 
 Contact : stevelaclasse@gmail.com

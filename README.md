@@ -21,4 +21,10 @@ the application was initially written in French but was later tranlated in engli
 
 otherwise, it already allows a good handling of these 5 DOS attacks.
 
+
+https://sourceforge.net/projects/class-dos-attacker/
+
+https://github.com/stevelaclasse/CLASS_DOS_ATTACKER
+
+
 Contact : stevelaclasse@gmail.com
